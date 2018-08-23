@@ -1,0 +1,191 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400');
+@import url('https://fonts.googleapis.com/css?family=Comfortaa');
+
+.mega-chat-container {
+    overflow: hidden;
+}
+
+.chat-container {
+    white-space: pre-wrap;
+    display: flex;
+    padding-top: 100px;
+    overflow: auto;
+}
+
+.chat-container .dialog {
+    height: calc(100vh - 268px);
+    padding: 0;
+    margin: 40px auto 0px auto;
+    width: 80%;
+    max-width: 700px;
+}
+
+.chat-container .dialog .group img {
+    width: 45px;
+    height: auto;
+    float: left;
+    position: absolute;
+    bottom: 0px;
+}
+
+.chat-container .dialog .group {
+    position: relative;
+    list-style: none;
+    clear: both;
+}
+
+.chat-container .dialog .group.bunch {
+    margin: 5px 0 0 0;
+}
+
+.chat-container .dialog .group.break {
+    margin: 15px 0 0 0;
+}
+
+.chat-container .dialog .group.bot {
+    float: left;
+}
+
+.chat-container .dialog .group.user {
+    float: right;
+}
+
+.group .message {
+    border-radius: 21px;
+    padding: 15px 20px;
+    word-wrap: break-word;
+}
+
+.group .message p {
+    margin: 0px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 17px;
+}
+
+.group .message a {
+    color: #FED750;
+}
+
+.bot .message {
+    background: white;
+    max-width: 80%;
+    margin: 0px 40px 0px 60px; 
+}
+
+.user .message {
+    background: #FED750;
+    color: white;
+    max-width: 250px;
+}
+
+form {
+    display: flex;
+    flex-direction: row;
+    background-color: #ffffff;
+    height: 47px;
+    width: 80%;
+    max-width: 700px;
+    border-radius: 50px;
+    margin:0 auto;
+}
+
+form input:focus {
+    outline: none;
+}
+
+form .messageText {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 17px;
+    height: 42px;
+    width: 90%;
+    max-width: 760px;
+    margin: 3px 0 0 18px;
+    font-size: 20px;
+    background-color: #ffffff;
+    border: 0px;
+}
+
+form .send {
+    height: 35px;
+    width: auto;
+    margin: 6px 15px 0 5px;
+}
+
+.sign-off-center {
+    margin: 0 auto;
+    width: 80%;
+    max-width: 700px;
+}
+
+.sign-off {
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 12px;
+    color: white;
+    float: right;
+    margin: 3px 15px 0 0;
+}
+
+.sign-off a {
+    color: white;
+}
+
+.typing-indicator {
+    will-change: transform;
+    width: auto;
+    display: table;
+    padding: 5px 0px;
+    margin: 0 auto;
+    position: relative;
+    -webkit-animation: 2s bulge infinite ease-out;
+            animation: 2s bulge infinite ease-out;
+}
+
+.typing-indicator span {
+    height: 14px;
+    width: 14px;
+    float: left;
+    margin: 0 1px;
+    background-color: #FED750;
+    display: block;
+    border-radius: 50%;
+    opacity: 0.4;
+}
+
+.typing-indicator span:nth-of-type(1) {
+    -webkit-animation: 1s blink infinite 0.3333s;
+    animation: 1s blink infinite 0.3333s;
+}
+
+.typing-indicator span:nth-of-type(2) {
+    -webkit-animation: 1s blink infinite 0.6666s;
+    animation: 1s blink infinite 0.6666s;
+}
+
+.typing-indicator span:nth-of-type(3) {
+    -webkit-animation: 1s blink infinite 0.9999s;
+    animation: 1s blink infinite 0.9999s;
+}
+  
+@-webkit-keyframes blink {
+    50% {
+        opacity: 1;
+    }
+}
+  
+@keyframes blink {
+    50% {
+        opacity: 1;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .user .message {
+        max-width: 175px;
+    }
+    .bot .message {
+        max-width: 200px;
+    }
+}
+

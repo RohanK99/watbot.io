@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css?family=Comfortaa');
+
+.app {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+}
+
+h2 {
+    font-family: 'Comfortaa', sans-serif;
+    color: white;
+    margin: 0;
+}
+
+.page-border {
+    height: calc(100vh - 20px);
+    width: calc(100vw - 20px);
+    background-color: #0071CD;
+    border-radius: 10px;
+    align-items: center;
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+    top: 10px;
+    right: 10px;
+    position: absolute;
+}
+
+.header {
+    width: 100%;
+    position: absolute;
+    display: relative;
+    z-index: 2;
+    background-image: linear-gradient(rgba(11, 62, 205,.7), rgba(11, 62, 205, 0) 100%);
+    border-top-right-radius: 11px;
+    border-top-left-radius: 11px;
+}
+
+.header-content {
+    padding: 40px 50px 60px 50px;
+}
+
+.title {
+    margin-top: 6px;
+    float: left;
+}
+
+.boxy {
+    font-family: "Comfortaa", sans-serif;
+    font-weight: 400;
+    color: white;
+    font-size: 1em;
+    background-color: transparent;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 12px 16px;
+    border-style: solid;
+    border-width: 2px;
+    transition: all 0.2s ease;
+    border-radius: 100px;
+    border-color: white;
+    float: right;
+}
+
+.boxy:hover {
+    background-color: #FED750;
+}
+
+.boxy:focus {
+    outline: none;
+}
+
+@media screen and (max-width: 400px) {
+    .title, .boxy {
+        float: none;
+        text-align: center;
+        display: block;
+        margin: 5px auto;
+    }
+}

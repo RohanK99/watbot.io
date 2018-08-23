@@ -1,0 +1,22 @@
+{
+    "name": "watbot.io",
+    "version": "0.0.0",
+    "scripts": {
+        "client": "cd ../client && yarn start",
+        "server": "nodemon proxy-server.js",
+        "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
+        "bundle": "cd ../client && yarn build",
+        "deploy": "node proxy-server.js"
+    },
+    "dependencies": {
+        "body-parser": "^1.18.3",
+        "dotenv": "^6.0.0",
+        "express": "^4.16.3",
+        "mongoose": "^5.2.9",
+        "node-fetch": "^2.2.0"
+    },
+    "devDependencies": {
+        "concurrently": "^3.6.1"
+    },
+    "license": "ISC"
+}
