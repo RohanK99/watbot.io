@@ -3,7 +3,7 @@ import '../styles/Chatbot.css';
 import Send from '../resources/send.svg';
 import Message from './Message';
 
-const SELF = "https://rohank99.github.io"
+const SELF = "https://github.com/RohanK99/watbot.io"
 
 const INTRO = [
     "Hey <span role='img' aria-label='wave'>👋</span>",
