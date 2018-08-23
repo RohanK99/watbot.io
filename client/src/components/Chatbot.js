@@ -3,7 +3,8 @@ import '../styles/Chatbot.css';
 import Send from '../resources/send.svg';
 import Message from './Message';
 
-const SELF = "https://github.com/RohanK99/watbot.io"
+const SAFARI = !!navigator.userAgent.match(/Version\/[\d]+.*Safari/);
+const GITHUB = "https://github.com/RohanK99/watbot.io"
 
 const INTRO = [
     "Hey <span role='img' aria-label='wave'>👋</span>",
@@ -36,6 +37,7 @@ class Chatbot extends PureComponent {
     }
 
     componentDidMount() {
+        console.log(SAFARI)
         this.animateMessage(INTRO)
         this.scrollToBot();
     }
@@ -170,11 +172,11 @@ class Chatbot extends PureComponent {
                     </ul>
                 </div>
                 <form onSubmit={(e) => this.submitMessage(e)}>
-                    <input className="messageText" type="text" placeholder="Type here" value={this.state.message} onChange={this.handleType}></input>
+                    <input disabled={SAFARI && botIsTyping} className="messageText" type="text" placeholder="Type here" value={this.state.message} onChange={this.handleType}></input>
                     <input disabled={botIsTyping | message === ''} className="send" src={Send} type="image" alt="send" style={(botIsTyping | message === '') ? disabled : {}}></input>
                 </form>
                 <div className="sign-off-center">
-                    <p className="sign-off">made with <span role="img" aria-label="love">❤️</span>by <a href={SELF} target="_blank" rel="noopener noreferrer">Rohan</a></p>
+                    <p className="sign-off">made with <span role="img" aria-label="love">❤️</span>by <a href={GITHUB} target="_blank" rel="noopener noreferrer">Rohan</a></p>
                 </div>
             </div>
         )
