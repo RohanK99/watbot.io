@@ -3,7 +3,6 @@ import '../styles/Chatbot.css';
 import Send from '../resources/send.svg';
 import Message from './Message';
 
-const SAFARI = !!navigator.userAgent.match(/Version\/[\d]+.*Safari/);
 const GITHUB = "https://github.com/RohanK99/watbot.io"
 
 const INTRO = [
@@ -37,7 +36,6 @@ class Chatbot extends PureComponent {
     }
 
     componentDidMount() {
-        console.log(SAFARI)
         this.animateMessage(INTRO)
         this.scrollToBot();
     }
@@ -107,40 +105,43 @@ class Chatbot extends PureComponent {
     submitMessage(e) {
         e.preventDefault();
 
-        var message = {}
-        message['question'] = this.state.message
+        if (!this.state.botIsTyping && this.state.message !== '') {
+            var message = {}
+            message['question'] = this.state.message
 
-        var length = this.state.chats.length+1;
-        this.setState(prevState => ({
-            chats: prevState.chats.concat([{
-                isUser: true,
-                content: <p>{this.state.message}</p>,
-            }, {
-                isUser: false,
-                content: <div className="typing-indicator"><span></span><span></span><span></span></div>
-            }]),
-            activeIndexes: prevState.activeIndexes.concat([length]),
-            botIsTyping: true,
-            message: ''
-        }))
+            var length = this.state.chats.length+1;
+            this.setState(prevState => ({
+                chats: prevState.chats.concat([{
+                    isUser: true,
+                    content: <p>{this.state.message}</p>,
+                }, {
+                    isUser: false,
+                    content: <div className="typing-indicator"><span></span><span></span><span></span></div>
+                }]),
+                activeIndexes: prevState.activeIndexes.concat([length]),
+                botIsTyping: true,
+                message: ''
+            }))
 
-        this.timeout(30 * 1000, fetch('/proxy', {
-            method: 'POST',
-            headers: {
-                'Content-Type': "application/json",
-            },
-            body: JSON.stringify(message)
-        }))
-        .then(resp => resp.json())
-        .then(response => {
-            this.state.chats.pop()
-            this.animateMessage(response["answer"])
-        })
-        .catch(err => {
-            this.state.chats.pop()
-            this.animateMessage(TIMEOUTERROR)
-            console.log('Request failed', err)
-        })
+            this.timeout(30 * 1000, fetch('/proxy', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': "application/json",
+                },
+                body: JSON.stringify(message)
+            }))
+            .then(resp => resp.json())
+            .then(response => {
+                this.state.chats.pop()
+                this.animateMessage(response["answer"])
+            })
+            .catch(err => {
+                this.state.chats.pop()
+                this.animateMessage(TIMEOUTERROR)
+                console.log('Request failed', err)
+            })
+        }
+
     }
 
     handleType(e) {
@@ -172,7 +173,7 @@ class Chatbot extends PureComponent {
                     </ul>
                 </div>
                 <form onSubmit={(e) => this.submitMessage(e)}>
-                    <input disabled={SAFARI && botIsTyping} className="messageText" type="text" placeholder="Type here" value={this.state.message} onChange={this.handleType}></input>
+                    <input className="messageText" type="text" placeholder="Type here" value={this.state.message} onChange={this.handleType}></input>
                     <input disabled={botIsTyping | message === ''} className="send" src={Send} type="image" alt="send" style={(botIsTyping | message === '') ? disabled : {}}></input>
                 </form>
                 <div className="sign-off-center">
@@ -184,3 +185,5 @@ class Chatbot extends PureComponent {
 }
 
 export default Chatbot;
+
+
