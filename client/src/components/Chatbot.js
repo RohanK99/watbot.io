@@ -177,7 +177,7 @@ class Chatbot extends PureComponent {
                     <input disabled={botIsTyping | message === ''} className="send" src={Send} type="image" alt="send" style={(botIsTyping | message === '') ? disabled : {}}></input>
                 </form>
                 <div className="sign-off-center">
-                    <p className="sign-off">made with <span role="img" aria-label="love">❤️</span>by <a href={GITHUB} target="_blank" rel="noopener noreferrer">Rohan</a></p>
+                    <p className="sign-off">made with <span role="img" aria-label="love">❤️</span> by <a href={GITHUB} target="_blank" rel="noopener noreferrer">Rohan</a></p>
                 </div>
             </div>
         )
